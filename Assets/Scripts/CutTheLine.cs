@@ -18,9 +18,11 @@ public class CutTheLine : MonoBehaviour
 
     public void cut()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
-        gameObject.transform.parent.Find("CutedLine").GetComponent<MeshRenderer>().enabled = true;
-        ModuleProvoda module = gameObject.transform.parent.parent.parent.GetComponent<ModuleProvoda>();
-        module.checkMistakes(gameObject.transform.parent.gameObject);
+        gameObject.transform.Find("SolidLine").GetComponent<MeshRenderer>().enabled = false; // выключить целый
+        gameObject.transform.Find("CutedLine").GetComponent<MeshRenderer>().enabled = true; // включитьт порезанный
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<Outline>().enabled = false;
+        ModuleProvoda module = gameObject.transform.parent.parent.GetComponent<ModuleProvoda>();
+        module.checkMistakes(gameObject);
     }
 }

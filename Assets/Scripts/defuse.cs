@@ -5,9 +5,8 @@ using System;
 
 public class defuse : MonoBehaviour
 {
-    public GameObject BombModule;
-    public List<GameObject> SelectedSolidLines;
-    public GameObject SelectedSolidLine;
+    public List<GameObject> SelectedProvods;
+    public GameObject SelectedProvod;
 
     // Start is called before the first frame update
     void Start()
@@ -18,30 +17,37 @@ public class defuse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SelectedSolidLines.Count > 0) SelectedSolidLine = SelectedSolidLines[0];
-        else SelectedSolidLine = null;
+        if (SelectedProvods.Count > 0) SelectedProvod = SelectedProvods[0];
+        else SelectedProvod = null;
 
-        if (Input.GetKey(KeyCode.G) && SelectedSolidLine!=null)
+        if (Input.GetKeyDown(KeyCode.G) && SelectedProvod!=null)
         {
-            SelectedSolidLine.GetComponent<CutTheLine>().cut();
+            SelectedProvod.GetComponent<CutTheLine>().cut();
+            SelectedProvods.Remove(SelectedProvod);
+            if (SelectedProvods.Count > 0) SelectedProvods[0].GetComponent<Outline>().enabled = true;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "SolidLine")
+        if(other.tag == "Provod")
         {
+            foreach(GameObject Line in SelectedProvods)
+            {
+                Line.GetComponent<Outline>().enabled = false;
+            }
             other.GetComponent<Outline>().enabled = true;
-            SelectedSolidLines.Add(other.gameObject);
+            SelectedProvods.Insert(0, other.gameObject);
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "SolidLine")
+        if (other.tag == "Provod")
         {
             other.GetComponent<Outline>().enabled = false;
-            SelectedSolidLines.Remove(other.gameObject);
+            SelectedProvods.Remove(other.gameObject);
+            if (SelectedProvods.Count > 0) SelectedProvods[0].GetComponent<Outline>().enabled = true;
         }
     }
 }
