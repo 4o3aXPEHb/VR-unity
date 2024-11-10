@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5024290138979741833}
   - component: {fileID: 5673390235195507666}
   m_Layer: 0
-  m_Name: Line2Cut
-  m_TagString: Untagged
+  m_Name: CutedLine
+  m_TagString: CutedLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,10 +94,11 @@ GameObject:
   - component: {fileID: 2518224280833981922}
   - component: {fileID: 4607790124848605829}
   - component: {fileID: 144783135878271588}
-  - component: {fileID: 3737708443191278686}
   - component: {fileID: 3684469756371529303}
+  - component: {fileID: 3737708443191278686}
+  - component: {fileID: 4652888169676518458}
   m_Layer: 0
-  m_Name: Line3Solid
+  m_Name: SolidLine
   m_TagString: SolidLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -168,6 +169,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3684469756371529303
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022438198656111456}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.017950581, y: 0.0045970003, z: 0.006064877}
+  m_Center: {x: -0.00010271845, y: 0.00087850104, z: -0.0031596033}
 --- !u!114 &3737708443191278686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,19 +200,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!65 &3684469756371529303
-BoxCollider:
+--- !u!114 &4652888169676518458
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022438198656111456}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.017950581, y: 0.0045970003, z: 0.006064877}
-  m_Center: {x: -0.00010271845, y: 0.00087850104, z: -0.0031596033}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d392d073d35b74683fd56afe1e9f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1221314344077759789
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,8 +224,8 @@ GameObject:
   - component: {fileID: 8666241932326916890}
   - component: {fileID: 7207941249654779320}
   m_Layer: 0
-  m_Name: Line1Cut
-  m_TagString: Untagged
+  m_Name: CutedLine
+  m_TagString: CutedLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -331,6 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Lines: []
   LinesCount: 0
+  checkedLines: 000101
 --- !u!65 &3737708444401182271
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -422,10 +436,11 @@ GameObject:
   - component: {fileID: 1098025829905101920}
   - component: {fileID: 8735822377320865520}
   - component: {fileID: 7315059877325469685}
-  - component: {fileID: 3737708443627054242}
   - component: {fileID: 2958233072331795232}
+  - component: {fileID: 3737708443627054242}
+  - component: {fileID: 1265940094}
   m_Layer: 0
-  m_Name: Line1Solid
+  m_Name: SolidLine
   m_TagString: SolidLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -496,6 +511,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2958233072331795232
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2548341579370269763}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.018183023, y: 0.0034443412, z: 0.0061757783}
+  m_Center: {x: 0.000018727711, y: -0.00055961346, z: -0.003043599}
 --- !u!114 &3737708443627054242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -514,19 +542,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!65 &2958233072331795232
-BoxCollider:
+--- !u!114 &1265940094
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2548341579370269763}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.018183023, y: 0.0034443412, z: 0.0061757783}
-  m_Center: {x: 0.000018727711, y: -0.00055961346, z: -0.003043599}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d392d073d35b74683fd56afe1e9f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3465369085817956058
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,8 +566,8 @@ GameObject:
   - component: {fileID: 2768996467399241672}
   - component: {fileID: 4142607484931968386}
   m_Layer: 0
-  m_Name: Line3Cut
-  m_TagString: Untagged
+  m_Name: CutedLine
+  m_TagString: CutedLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -687,10 +714,11 @@ GameObject:
   - component: {fileID: 670357534125464555}
   - component: {fileID: 6964439796821462015}
   - component: {fileID: 1308322934318123429}
-  - component: {fileID: 3737708443215443994}
   - component: {fileID: 4284467794493204598}
+  - component: {fileID: 3737708443215443994}
+  - component: {fileID: 6872802342624841191}
   m_Layer: 0
-  m_Name: Line2Solid
+  m_Name: SolidLine
   m_TagString: SolidLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -761,6 +789,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4284467794493204598
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7595828085648679973}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.017902687, y: 0.003031865, z: 0.006619173}
+  m_Center: {x: 0.00020214605, y: -0.0010484665, z: -0.002888958}
 --- !u!114 &3737708443215443994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -779,19 +820,18 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!65 &4284467794493204598
-BoxCollider:
+--- !u!114 &6872802342624841191
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7595828085648679973}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.017902687, y: 0.003031865, z: 0.006619173}
-  m_Center: {x: 0.00020214605, y: -0.0010484665, z: -0.002888958}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d392d073d35b74683fd56afe1e9f4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8023877831118070005
 GameObject:
   m_ObjectHideFlags: 0
