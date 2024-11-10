@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CutTheLine : MonoBehaviour
+public class Provod : MonoBehaviour
 {
+
+    public bool isCuted = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class CutTheLine : MonoBehaviour
         gameObject.transform.Find("CutedLine").GetComponent<MeshRenderer>().enabled = true; // включитьт порезанный
         gameObject.GetComponent<BoxCollider>().enabled = false;
         gameObject.GetComponent<Outline>().enabled = false;
+        isCuted = true;
         ModuleProvoda module = gameObject.transform.parent.parent.GetComponent<ModuleProvoda>();
         module.checkMistakes(gameObject);
     }

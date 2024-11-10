@@ -22,7 +22,7 @@ public class defuse : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G) && SelectedProvod!=null)
         {
-            SelectedProvod.GetComponent<CutTheLine>().cut();
+            SelectedProvod.GetComponent<Provod>().cut();
             SelectedProvods.Remove(SelectedProvod);
             if (SelectedProvods.Count > 0) SelectedProvods[0].GetComponent<Outline>().enabled = true;
         }

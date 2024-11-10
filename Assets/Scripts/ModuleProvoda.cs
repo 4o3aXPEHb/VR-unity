@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModuleProvoda : MonoBehaviour
+public class ModuleProvoda : MonoBehaviour, IModule
 {
     [HideInInspector]
     public List<GameObject> Lines;
@@ -10,6 +10,10 @@ public class ModuleProvoda : MonoBehaviour
     public int LinesCount = 0;
     [Tooltip("какие провода резать (0-оставить, 1-резать)")]
     public bool[] checkedLines;
+    public bool isCompleted = false;
+
+    bool IModule.isCompleted { get => isCompleted; set => isCompleted = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +44,37 @@ public class ModuleProvoda : MonoBehaviour
         int index = Lines.FindIndex(l => l == Line);
         if (checkedLines[index] == false)
         {
-            Debug.Log("BOOM!");
+            ModuleIsError();
         }
+        else
+        {
+            // проверка всех проводов на правильность
+            for(int i =0; i<LinesCount; i++)
+            {
+                if (Lines[i].GetComponent<Provod>().isCuted == checkedLines[i])
+                {
+                    isCompleted = true;
+                    continue;
+                }
+                else
+                {
+                    isCompleted = false;
+                    break;
+                }
+            }
+        }
+        if (isCompleted) ModuleIsComplete();
+    }
+
+    public void ModuleIsComplete()
+    {
+        Debug.Log("Module has been defused!");
+        gameObject.transform.parent.parent.GetComponent<BombBase>().ModuleIsComplete(gameObject);
+    }
+
+    public void ModuleIsError()
+    {
+        Debug.Log("Module mistake!");
+        gameObject.transform.parent.parent.GetComponent<BombBase>().ModuleIsError(gameObject);
     }
 }
