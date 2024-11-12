@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ModuleProvoda : MonoBehaviour, IModule
+public class ModuleProvoda : BombModule
 {
     [HideInInspector]
     public List<GameObject> Lines;
@@ -10,9 +10,7 @@ public class ModuleProvoda : MonoBehaviour, IModule
     public int LinesCount = 0;
     [Tooltip("какие провода резать (0-оставить, 1-резать)")]
     public bool[] checkedLines;
-    public bool isCompleted = false;
 
-    bool IModule.isCompleted { get => isCompleted; set => isCompleted = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -48,9 +46,10 @@ public class ModuleProvoda : MonoBehaviour, IModule
         }
         else
         {
-            // проверка всех проводов на правильность
+            // проверка проводов (только те которые нужно резать) на правильность
             for(int i =0; i<LinesCount; i++)
             {
+                if (checkedLines[i] == false) continue;
                 if (Lines[i].GetComponent<Provod>().isCuted == checkedLines[i])
                 {
                     isCompleted = true;
@@ -64,17 +63,5 @@ public class ModuleProvoda : MonoBehaviour, IModule
             }
         }
         if (isCompleted) ModuleIsComplete();
-    }
-
-    public void ModuleIsComplete()
-    {
-        Debug.Log("Module has been defused!");
-        gameObject.transform.parent.parent.GetComponent<BombBase>().ModuleIsComplete(gameObject);
-    }
-
-    public void ModuleIsError()
-    {
-        Debug.Log("Module mistake!");
-        gameObject.transform.parent.parent.GetComponent<BombBase>().ModuleIsError(gameObject);
     }
 }

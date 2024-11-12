@@ -5,10 +5,13 @@ using UnityEngine;
 public class BombBase : MonoBehaviour
 {
     public int maxErrors = 3;
-    public int curErrors = 0;
-    public bool isCompleted = false;
-    public List<GameObject> Modules;
-    public int ModulesCount;
+    [SerializeField]
+    private int curErrors = 0;
+    [SerializeField]
+    private bool isCompleted = false;
+    [SerializeField]
+    private List<GameObject> Modules;
+    private int ModulesCount;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +38,7 @@ public class BombBase : MonoBehaviour
         // проверка всех модулей на правильность
         foreach (GameObject m in Modules)
         {
-            if (m.GetComponent<IModule>().isCompleted == true)
+            if (m.GetComponent<BombModule>().isCompleted == true)
             {
                 isCompleted = true;
                 continue;
@@ -53,7 +56,7 @@ public class BombBase : MonoBehaviour
     public void ModuleIsError(GameObject errorModule)
     {
         curErrors += 1;
-        if(curErrors >= maxErrors)
+        if(curErrors >= maxErrors || errorModule == gameObject) // ... или ошибка в самой бомбе (например таймер)
         {
             Debug.Log("BooM!");
         }

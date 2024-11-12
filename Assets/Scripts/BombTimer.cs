@@ -32,6 +32,7 @@ public class BombTimer : MonoBehaviour
             timerIsRun = false;
             timer = 0;
             tmpro.text = "00:00";
+            gameObject.GetComponent<BombBase>().ModuleIsError(gameObject);
         }
     }
 }
