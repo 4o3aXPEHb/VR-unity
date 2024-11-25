@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 1992197873301725812}
   - component: {fileID: 3737708444401182271}
   m_Layer: 0
-  m_Name: BombModuleProvoda
+  m_Name: ProvodaBombModule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

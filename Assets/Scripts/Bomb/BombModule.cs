@@ -7,6 +7,7 @@ public class BombModule : MonoBehaviour
     public bool isCompleted = false;
     public void ModuleIsComplete()
     {
+        isCompleted = true;
         Debug.Log("Module has been defused!");
         gameObject.transform.parent.parent.GetComponent<BombBase>().ModuleIsComplete(gameObject);
     }
