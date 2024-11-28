@@ -19,7 +19,7 @@ public class ButtonGrid : MonoBehaviour
         
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         module.Move(horizontalDirection, verticalDirection);
     }
