@@ -7,17 +7,15 @@ public class ButtonGrid : MonoBehaviour
     public int horizontalDirection;
     public int verticalDirection;
     private ModuleGrid module;
+    private Outline outline;
+
     // Start is called before the first frame update
     void Start()
     {
+        outline = GetComponent<Outline>();
         module = transform.parent.parent.GetComponent<ModuleGrid>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnMouseDown()
     {

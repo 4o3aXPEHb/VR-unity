@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BombBase : MonoBehaviour
 {
+    public GameManager gameManager;
     public int maxErrors = 3;
     [SerializeField]
     private int curErrors = 0;
@@ -12,6 +13,7 @@ public class BombBase : MonoBehaviour
     [SerializeField]
     private List<GameObject> Modules;
     private int ModulesCount;
+    private BombTimer timer;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,10 +29,11 @@ public class BombBase : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void OnEnable()
     {
-        
+        timer = gameObject.GetComponent<BombTimer>();
+        timer.timerIsRun = true;
     }
 
     public void ModuleIsComplete(GameObject comletedModule)
@@ -49,8 +52,12 @@ public class BombBase : MonoBehaviour
                 break;
             }
         }
-        
-        if (isCompleted) Debug.Log("Bomb has been defused!");
+
+        if (isCompleted)
+        {
+            Debug.Log("Bomb has been defused!");
+            gameManager.bombDefused();
+        }
     }
 
     public void ModuleIsError(GameObject errorModule)
@@ -58,7 +65,8 @@ public class BombBase : MonoBehaviour
         curErrors += 1;
         if(curErrors >= maxErrors || errorModule == gameObject) // ... или ошибка в самой бомбе (например таймер)
         {
-            Debug.Log("BooM!");
+            gameManager.loose();
         }
     }
+
 }
