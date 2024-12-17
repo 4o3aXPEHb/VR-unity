@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 
 public class ItemSlot : MonoBehaviour
@@ -9,6 +10,8 @@ public class ItemSlot : MonoBehaviour
     public Transform dropPoint;
     private GameObject currentItem;
     private Outline outline;
+    
+
 
     private void Start()
     {

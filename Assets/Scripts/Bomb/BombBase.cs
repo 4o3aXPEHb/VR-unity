@@ -26,14 +26,18 @@ public class BombBase : MonoBehaviour
             // добавляет модуль в список
             var moduleGameObject = modules.GetChild(i).gameObject;
             Modules.Add(moduleGameObject);
+            moduleGameObject.SetActive(false);
         }
     }
 
-
-    public void OnEnable()
+    public void Activate()
     {
         timer = gameObject.GetComponent<BombTimer>();
         timer.timerIsRun = true;
+        foreach (GameObject module in Modules)
+        {
+            module.SetActive(true);
+        }
     }
 
     public void ModuleIsComplete(GameObject comletedModule)
