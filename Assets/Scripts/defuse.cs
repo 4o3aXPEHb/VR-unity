@@ -20,7 +20,12 @@ public class defuse : MonoBehaviour
         if (SelectedProvods.Count > 0) SelectedProvod = SelectedProvods[0];
         else SelectedProvod = null;
 
-        if (Input.GetKeyDown(KeyCode.G) && SelectedProvod!=null)
+        
+    }
+
+    public void Defuse()
+    {
+        if (SelectedProvod != null)
         {
             SelectedProvod.GetComponent<Provod>().cut();
             SelectedProvods.Remove(SelectedProvod);

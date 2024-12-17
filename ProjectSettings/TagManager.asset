@@ -8,6 +8,7 @@ TagManager:
   - SolidLine
   - CutedLine
   - Provod
+  - Item
   layers:
   - Default
   - TransparentFX
