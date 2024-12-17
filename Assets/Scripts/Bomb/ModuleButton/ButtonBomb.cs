@@ -40,7 +40,7 @@ public class ButtonBomb : BombModule
         }
     }
 
-    private void OnMouseDown()
+    public void OnButtonDown()
     {
         if (isDefused) return; // Если бомба уже обезврежена, игнорируем нажатие
 
@@ -56,7 +56,7 @@ public class ButtonBomb : BombModule
         }
     }
 
-    private void OnMouseUp()
+    public void OnButtonUp()
     {
         if (isDefused) return; // Если бомба уже обезврежена, игнорируем отпускание
 
@@ -140,6 +140,6 @@ public class ButtonBomb : BombModule
         isDefused = true; // Устанавливаем флаг обезвреживания
         ModuleIsComplete();
         UpdateIndicator(Color.green); // Устанавливаем зелёный цвет
-        Debug.Log("Bomb successfully defused!");
+        Debug.Log("module knopka defused!");
     }
 }

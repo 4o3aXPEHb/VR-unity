@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MemoryModule : MonoBehaviour
+public class MemoryModule : BombModule
 {
     // UI Elements
     public TMP_Text displayText;
@@ -22,15 +22,14 @@ public class MemoryModule : MonoBehaviour
 
     void StartStage()
     {
-        if (stage > 5)
+        if (stage > 3)
         {
-            Debug.Log("Module Defused!");
+            ModuleIsComplete();
             return;
         }
 
         GenerateRandomNumbers();
-        displayText.text = displayedNumbers[stage - 1].ToString();
-        Debug.Log($"Stage {stage} started. Display shows {displayedNumbers[stage - 1]}");
+        displayText.text = "Текущий этап: " + stage + "/3\nЧисло: " + displayedNumbers[stage - 1].ToString();
     }
 
     void GenerateRandomNumbers()
@@ -63,7 +62,7 @@ public class MemoryModule : MonoBehaviour
     }
 
 
-    void OnButtonPress(int pressedIndex)
+    public void OnButtonPress(int pressedIndex)
     {
         int pressedNumber = int.Parse(buttonTexts[pressedIndex].text);
 
@@ -71,13 +70,12 @@ public class MemoryModule : MonoBehaviour
         {
             pressedPositions.Add(pressedIndex);
             pressedValues.Add(pressedNumber);
-            Debug.Log($"Correct! Stage {stage} passed.");
             stage++;
             StartStage();
         }
         else
         {
-            Debug.Log("Strike! Wrong button pressed.");
+            ModuleIsError();
         }
     }
 
