@@ -10,11 +10,13 @@ public class ModuleProvoda : BombModule
     public int LinesCount = 0;
     [Tooltip("какие провода резать (0-оставить, 1-резать)")]
     public bool[] checkedLines;
+    public GameObject indicator;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        indicator.SetActive(false);
         //находит объект с проводами
         var lines = transform.Find("Lines");
         LinesCount = lines.childCount;
@@ -62,6 +64,10 @@ public class ModuleProvoda : BombModule
                 }
             }
         }
-        if (isCompleted) ModuleIsComplete();
+        if (isCompleted)
+        {
+            indicator.SetActive(true);
+            ModuleIsComplete();
+        }
     }
 }

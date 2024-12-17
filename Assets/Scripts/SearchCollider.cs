@@ -6,6 +6,7 @@ using UnityEngine;
 public class SearchCollider : MonoBehaviour
 {
     public GameObject SearchPoint;
+    public GameObject indicator;
     [SerializeField]
     public float DistanceToBomb;
     //[Range(0,10)]
@@ -17,6 +18,9 @@ public class SearchCollider : MonoBehaviour
     public float minInterval = 0.1f; // Минимальный интервал между сигналами
     public float maxInterval = 1f;  // Максимальный интервал между сигналами
     private float timer = 0f;       // Таймер для звука
+
+    private float timerIndicator = 0.08f;
+    private float timerIndicatorInterval = 0;
 
 
     // Start is called before the first frame update
@@ -51,8 +55,16 @@ public class SearchCollider : MonoBehaviour
 
                 // Таймер для воспроизведения звука
                 timer -= Time.deltaTime;
+                timerIndicator -= Time.deltaTime;
+                if (timerIndicator <= 0)
+                {
+                    indicator.SetActive(false);
+                }
+
                 if (timer <= 0f)
                 {
+                    timerIndicator = timerIndicatorInterval;
+                    indicator.SetActive(true);
                     Debug.Log("PEEP!!");
                     timer = interval;
                 }

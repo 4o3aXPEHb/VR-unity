@@ -11,11 +11,13 @@ public class ModuleGrid : BombModule
     [Header("Цель")]
     public int targetPosX = 1;
     public int targetPosY = 1;
+    public GameObject indicator;
 
     private PlaneGrid planeGrid;
     // Start is called before the first frame update
     void Start()
     {
+        indicator.SetActive(false);
         planeGrid = transform.Find("PlaneGrid").GetComponent<PlaneGrid>();
     }
 
@@ -38,7 +40,11 @@ public class ModuleGrid : BombModule
             if (playerPosY < 0) playerPosY = 0;
             if (playerPosY >= cellsCount) playerPosY = cellsCount - 1;
 
-            if (playerPosX == targetPosX && playerPosY == targetPosY) ModuleIsComplete();
+            if (playerPosX == targetPosX && playerPosY == targetPosY)
+            {
+                indicator.SetActive(true);
+                ModuleIsComplete();
+            }
 
             planeGrid.Render();
         }

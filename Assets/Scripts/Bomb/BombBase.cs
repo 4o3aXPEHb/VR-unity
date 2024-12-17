@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BombBase : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class BombBase : MonoBehaviour
     private List<GameObject> Modules;
     private int ModulesCount;
     private BombTimer timer;
+    public TMP_Text mistakesText;
+    public ParticleSystem Boom;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -67,8 +71,10 @@ public class BombBase : MonoBehaviour
     public void ModuleIsError(GameObject errorModule)
     {
         curErrors += 1;
-        if(curErrors >= maxErrors || errorModule == gameObject) // ... или ошибка в самой бомбе (например таймер)
+        mistakesText.text = "Ошибки: " + curErrors + "/" + maxErrors;
+        if (curErrors >= maxErrors || errorModule == gameObject) // ... или ошибка в самой бомбе (например таймер)
         {
+            Boom.Play();
             gameManager.loose();
         }
     }
